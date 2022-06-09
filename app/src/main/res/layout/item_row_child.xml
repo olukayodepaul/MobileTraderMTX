@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/headers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sku"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="206dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_vertical"
+            android:text="Items"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_bold"
+            />
+
+        <TextView
+            android:id="@+id/qty"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toStartOf="@+id/amount"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center_vertical|end"
+            android:textSize="12sp"
+            android:text="Pricing"/>
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toStartOf="@+id/total"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center_vertical|end"
+            android:textSize="12sp"
+            android:text="Inventory"/>
+
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center_vertical|end"
+            android:textSize="12sp"
+            android:text="Amount"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Outlet Location (onGoogle Map)"
+        android:id="@+id/googleLocations" />
+
+    <item android:title="Outlet Close"
+        android:id="@+id/outletClose" />
+
+    <item android:title="Outlet Open"
+        android:id="@+id/outletOpen" />
+
+    <item android:title="Outlet Update"
+        android:id="@+id/outletUpdate" />
+
+    <item android:title="Synchronisation"
+        android:id="@+id/async" />
+
+    <item android:title="Sales Record"
+        android:id="@+id/salesRecord" />
+
+</menu>

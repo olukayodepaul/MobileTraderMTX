@@ -1,0 +1,90 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent_modules">
+
+    <RelativeLayout
+        android:id="@+id/perent_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#ECEFF1"
+        android:layout_marginBottom="0.05dp">
+
+        <TextView
+            android:id="@+id/tv_skus"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:text="Products"
+            android:layout_toStartOf="@+id/mt_inventory"
+            android:lines="2"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="14sp"
+            android:textColor="@color/bg_black"
+            android:gravity="center_vertical"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mt_order"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_bold"
+            android:orientation="horizontal"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:lines="1"
+            android:layout_alignParentEnd="true"
+            android:hint="0.0"
+            android:inputType="numberDecimal"
+            android:background="@drawable/textviewborder"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/mt_pricing"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/roboto_bold"
+            android:orientation="horizontal"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:lines="1"
+            android:layout_toStartOf="@+id/mt_order"
+            android:hint="0"
+            android:inputType="number"
+            android:background="@drawable/textviewborder"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/mt_inventory"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_bold"
+            android:orientation="horizontal"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:lines="1"
+            android:layout_toStartOf="@+id/mt_pricing"
+            android:focusableInTouchMode="true"
+            android:hint="0.0"
+            android:inputType="numberDecimal"
+            android:background="@drawable/textviewborder"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+</RelativeLayout>

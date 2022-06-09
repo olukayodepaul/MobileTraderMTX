@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.orderpurchase.OrderPurchaseActivity"
+android:background="@color/iron">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/baseReleaseColor"
+    app:title="Sales History"
+    app:titleTextColor="@color/white"
+    android:theme="@style/AppTheme.Toolbar"
+    app:subtitleTextAppearance="@font/roboto_light"
+    app:subtitleTextColor="@color/white"
+    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"/>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/loaders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"
+        android:layout_below="@+id/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/parent_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/iron"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@+id/loaders"/>
+
+
+</RelativeLayout>
+
+
+

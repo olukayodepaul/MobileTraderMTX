@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:menu="@menu/attendant_menu">
+
+    <item
+        android:id="@+id/action_basket"
+        android:title="Daily Basket"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/cart_24"/>
+
+</menu>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:menu="@menu/attendant_menu">
+
+    <item
+        android:id="@+id/action_notifications"
+        android:title="Search"
+        android:icon="@drawable/ic_baseline_accessible_24"
+        app:showAsAction="always"
+        app:actionLayout="@layout/action_bar_notification" />
+
+    <item
+        android:id="@+id/action_filter_search"
+        android:title="Search"
+        android:icon="@drawable/save_24"
+        app:showAsAction="always"
+        />
+
+
+
+</menu>

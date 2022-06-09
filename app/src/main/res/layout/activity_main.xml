@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:focusable="true"
+android:focusableInTouchMode="true"
+android:scrollbars="vertical"
+tools:context=".ui.login.LoginActivity"
+android:background="@color/btm_regis_color"
+    android:forceDarkAllowed="false">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/image_ige"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/logi_widget"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:padding="10dp"
+                android:src="@drawable/xlogo"
+                android:transitionName="logo_image" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userNameWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            style="@style/inputText"
+            android:layout_below="@+id/image_ige">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/opensanbold"
+                android:textSize="18dp"
+                android:lines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:endIconMode="password_toggle"
+            style="@style/inputText"
+            android:layout_below="@+id/userNameWidget">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/opensanbold"
+                android:inputType="textPassword"
+                android:textSize="18dp"
+                android:lines="1"
+                android:singleLine="true"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/loginid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/passwordWidget"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign In"
+            android:textAlignment="center"
+            android:textColor="@color/rippleEffectColor"
+            android:textSize="16sp"
+            android:padding="12dp" />
+
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:theme="@style/WhiteAccent"
+            android:layout_below="@+id/loginid"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+</ScrollView>
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/opensanbold"
+        android:gravity="center"
+        android:text="©2022 Mobile TraderX, All rights reserved. V1.0.1"
+        android:textAlignment="center"
+        android:textSize="9sp"
+        android:layout_gravity="bottom"
+        android:textColor="@color/baseReleaseColor"
+        android:layout_marginBottom="10dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_modules"
+    android:background="@color/white"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/ballReleasegb"
+        android:paddingBottom="0.5dp">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/modulecontents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/timeago"
+                android:fontFamily="@font/roboto_black"
+                android:lines="1"
+                android:text="you are the best"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/timeago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@+id/icons_images"
+                android:fontFamily="@font/roboto_bold"
+                android:lines="1"
+                android:text="00:00:00"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/icons_images"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/timeago"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="1dp"
+                app:srcCompat="@drawable/ic_baseline_done_24_1"
+                android:layout_marginTop="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/custIcons"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/timeago"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="1dp"
+                app:srcCompat="@drawable/ic_baseline_done_24_2" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

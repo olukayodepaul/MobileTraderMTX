@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.messages.MessageActivity"
+android:background="@color/white">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/baseReleaseColor"
+    android:theme="@style/AppTheme.Toolbar"
+    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+    app:subtitleTextAppearance="@font/roboto_light"
+    app:subtitleTextColor="@color/white"
+    app:title="Messages"
+    app:titleTextColor="@color/white" />
+
+<LinearLayout
+    android:id="@+id/progressbarHolder"
+    android:layout_width="match_parent"
+    android:layout_height="3dp"
+    android:orientation="vertical"
+    android:layout_below="@+id/toolbar"
+    android:background="@color/white">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/loaders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+
+</LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@+id/progressbarHolder"/>
+
+</RelativeLayout>
+
+
+

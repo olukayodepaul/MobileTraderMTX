@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Outlet Location (onGoogle Map)"
+        android:id="@+id/googlelocation" />
+
+    <item android:title="Order Delivery"
+        android:id="@+id/deliver" />
+
+</menu>

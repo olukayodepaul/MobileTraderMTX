@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvsku"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_vertical"
+            android:text="Sku (items)"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_toStartOf="@+id/tvinventory" />
+
+        <TextView
+            android:id="@+id/tvinventory"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical|end"
+            android:text="Pricing"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_toStartOf="@+id/tvpricing"/>
+
+        <TextView
+            android:id="@+id/tvpricing"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical|end"
+            android:text="Pricing"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_toStartOf="@+id/tvqtysold"/>
+
+        <TextView
+            android:id="@+id/tvqtysold"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical|end"
+            android:text="Qty"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_toStartOf="@+id/tvamount"/>
+
+        <TextView
+            android:id="@+id/tvamount"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical|end"
+            android:text="Amount"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto_bold" />
+
+
+</RelativeLayout>

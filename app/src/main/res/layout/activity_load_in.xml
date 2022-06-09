@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.attendant.LoadInActivity"
+android:background="@color/white">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/baseReleaseColor"
+    app:title="Stock Return"
+    app:titleTextColor="@color/white"
+    android:theme="@style/AppTheme.Toolbar"
+    app:subtitleTextAppearance="@font/roboto_light"
+    app:subtitleTextColor="@color/white"
+    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"/>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/contentHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/toolbar"
+    android:background="@color/baseReleaseColor"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
+    <TextView
+        android:id="@+id/sku"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:text="SKU"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qty"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"
+        app:layout_constraintVertical_bias="0.483"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Returns"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="16sp"
+        android:layout_marginEnd="5dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Qty Sold"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/total"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/roboto_bold"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/qty"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Basket"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/amount"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/roboto_bold"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<LinearLayout
+    android:id="@+id/progressbarHolder"
+    android:layout_width="match_parent"
+    android:layout_height="3dp"
+    android:orientation="vertical"
+    android:layout_below="@+id/contentHeader"
+    android:background="@color/baseReleaseColor"
+    >
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/loaders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+
+</LinearLayout>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/contentsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/progressbarHolder"
+    android:layout_marginBottom="40dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/errors"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/notifications"
+        layout="@layout/attendant_response_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_below="@id/contentsLayout"
+    android:layout_marginTop="-30dp">
+
+    <TextView
+        android:id="@+id/sku_s"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical"
+        android:text="====="
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_bold"
+        />
+
+    <TextView
+        android:id="@+id/total_s"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical|end"
+        android:text=""
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_bold"/>
+
+    <TextView
+        android:id="@+id/amount_s"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toStartOf="@+id/total_s"
+        android:gravity="center_vertical|end"
+        android:text=""
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_bold"/>
+
+    <TextView
+        android:id="@+id/qty_s"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="207dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toStartOf="@+id/amount_s"
+        android:gravity="center_vertical|end"
+        android:text=""
+        android:textSize="15sp"
+        android:fontFamily="@font/roboto_bold"/>
+
+</RelativeLayout>
+
+</RelativeLayout>
+
+
+
