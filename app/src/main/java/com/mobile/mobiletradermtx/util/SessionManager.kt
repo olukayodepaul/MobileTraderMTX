@@ -19,11 +19,12 @@ class SessionManager (context: Context)  {
         private val entryDate = preferencesKey<String>("entryDate")
         private val customerEntryDate = preferencesKey<String>("customerEntryDate")
         private val employeeName = preferencesKey<String>("employeeName")
-        private val employeeEdcode= preferencesKey<String>("employeeEdcode")
+        private val employeeEdcode = preferencesKey<String>("employeeEdcode")
         private val regionId = preferencesKey<Int>("regionId")
         private val depotLat = preferencesKey<String>("depotLat")
         private val depotLng = preferencesKey<String>("depotLng")
         private val depotWaiver = preferencesKey<String>("depotWaiver")
+        private val dynamicCustomerNo = preferencesKey<String>("dynamicCustomerNo")
     }
 
     //delete state flow
@@ -31,6 +32,18 @@ class SessionManager (context: Context)  {
         dataStore.edit {
             it.clear()
         }
+    }
+
+    //store session
+    suspend fun storeDynamicCustomerNo(dynamicCustomer: String) {
+        dataStore.edit {
+            it[dynamicCustomerNo] = dynamicCustomer
+        }
+    }
+
+    //retrieve session
+    val fetchDynamicCustomerNo: Flow<String> = dataStore.data.map {
+        it[dynamicCustomerNo] ?: ""
     }
 
     //store session

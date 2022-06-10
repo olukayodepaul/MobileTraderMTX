@@ -27,4 +27,8 @@ class MessageRepoImpl (
         return appdoa.getCountDataAccuracyStatus()
     }
 
+    override suspend fun isCurrentMessage(msg: List<EntityAccuracy>) {
+        return appdoa.isCurrentMessage(msg)
+    }
+
 }

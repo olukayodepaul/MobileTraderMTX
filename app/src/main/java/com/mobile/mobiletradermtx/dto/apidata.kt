@@ -58,6 +58,9 @@ data class Employees(
     @SerializedName("depotwaiver")
     @Expose
     var depotwaiver: String? = null,
+    @SerializedName("customerno")
+    @Expose
+    var customerno: String? = null,
 
     )
 

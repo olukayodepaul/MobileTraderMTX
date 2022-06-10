@@ -125,6 +125,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                 sessionManager.storeWaiver(it.data.login!!.depotwaiver!!)
                                 sessionManager.storeUsername(userName!!)
                                 sessionManager.storePassword(password!!)
+                                sessionManager.storeDynamicCustomerNo(it.data.login!!.customerno!!)
 
                                 val intent = Intent(applicationContext, ModulesActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP.or(Intent.FLAG_ACTIVITY_NEW_TASK)

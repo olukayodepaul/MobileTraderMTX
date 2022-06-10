@@ -1,5 +1,6 @@
 package com.mobile.mobiletradermtx.ui.messages
 
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,21 +20,30 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
     fun isMessageAccuracy(customerCode: String, entriesDate: String) = viewModelScope.launch {
         _messageResponseState.value = NetworkResult.Loading
         try {
+            Log.d("EPOKHAI 0","$customerCode $entriesDate")
             val isDataAccuracy = repo.getDataAccuracy()
             val entryDate = isDataAccuracy.filter { it.entry_date.equals(entriesDate) }
+            Log.d("EPOKHAI 1","$entryDate")
 
             if (entryDate.isNotEmpty()) {
                 _messageResponseState.value = NetworkResult.Success(isDataAccuracy)
+                Log.d("EPOKHAI 2","")
             } else {
+                Log.d("EPOKHAI 3","$entryDate")
                 val isData = repo.dataAccuracy(customerCode)
+                Log.d("EPOKHAI 4","$isData")
                 if (isData.status == 200 || isData.accuracy!!.isNotEmpty()) {
-                    isData.accuracy!!.map { it.toAccuracyEntity() }
+                    Log.d("EPOKHAI 5","")
+                    val result = isData.accuracy!!.map { it.toAccuracyEntity() }
+                    repo.isCurrentMessage(result)
                     _messageResponseState.value = NetworkResult.Success(repo.getDataAccuracy())
                 } else {
+                    Log.d("EPOKHAI 6","")
                     _messageResponseState.value = NetworkResult.Success(emptyList())
                 }
             }
         } catch (e: Throwable) {
+                Log.d("EPOKHAI 7","${e.message}")
             _messageResponseState.value = NetworkResult.Error(e)
         }
     }
