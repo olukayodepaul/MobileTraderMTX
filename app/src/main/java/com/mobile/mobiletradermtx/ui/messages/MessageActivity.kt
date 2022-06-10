@@ -3,11 +3,17 @@ package com.mobile.mobiletradermtx.ui.messages
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mobile.mobiletradermtx.databinding.ActivityMessageBinding
+import com.mobile.mobiletradermtx.databinding.BottomItemSheetBinding
+import com.mobile.mobiletradermtx.databinding.MessageAdapterBinding
+import com.mobile.mobiletradermtx.databinding.MessageBottomSheetBinding
+import com.mobile.mobiletradermtx.dto.EntityAccuracy
 import com.mobile.mobiletradermtx.util.GeoFencing.currentDate
 import com.mobile.mobiletradermtx.util.NetworkResult
 import com.mobile.mobiletradermtx.util.SessionManager
@@ -58,18 +64,14 @@ class MessageActivity : AppCompatActivity() {
             it.let {
                 when(it) {
                     is NetworkResult.Empty -> {
-                        Log.d("EPOKHAI 10","")
                     }
                     is NetworkResult.Error -> {
-                        Log.d("EPOKHAI 11","")
                     }
                     is NetworkResult.Loading -> {
-                        Log.d("EPOKHAI 12","")
                     }
                     is NetworkResult.Success -> {
-                        Log.d("EPOKHAI 13","${it.data}")
                         binding.progressbarHolder.isVisible = false
-                        adapter = MessageAdapter(it.data!!)
+                        adapter = MessageAdapter(it.data!!,::handleAdapterEvent)
                         adapter.notifyDataSetChanged()
                         binding.recyclers.setItemViewCacheSize(it.data.size)
                         binding.recyclers.adapter = adapter
@@ -78,4 +80,17 @@ class MessageActivity : AppCompatActivity() {
             }
         }
     }
+
+     private fun handleAdapterEvent(item: EntityAccuracy, view: MessageAdapterBinding) {
+         viewModel.isMessageUpdateAccuracy(2, item._id!!)
+         view.custIcons.isVisible = true
+         view.iconsImages.isVisible = false
+         val inflater = LayoutInflater.from(applicationContext)
+         val bindings =  MessageBottomSheetBinding.inflate(inflater)
+         val dialog = BottomSheetDialog(this)
+         dialog.setContentView(bindings.root)
+         bindings.messageBody.text = item.remark!!.lowercase()
+         dialog.show()
+    }
+
 }

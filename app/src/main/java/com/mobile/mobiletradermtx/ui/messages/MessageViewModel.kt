@@ -53,16 +53,10 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
      * Update Status icon at on click.
      * @Update Update Status icon at on click
      */
-    private val _updateResponseState = MutableStateFlow<NetworkResult<Unit>>(NetworkResult.Empty)
-    val updateResponseState get() = _updateResponseState
-
     fun isMessageUpdateAccuracy(status: Int, id: String) = viewModelScope.launch {
         try {
-            _updateResponseState.value =
-                NetworkResult.Success(repo.updateDataAccuracyStatus(status, id))
-        } catch (e: Throwable) {
-            _updateResponseState.value = NetworkResult.Error(e)
-        }
+            NetworkResult.Success(repo.updateDataAccuracyStatus(status, id))
+        } catch (e: Throwable) {}
     }
 
     //put it on modules.

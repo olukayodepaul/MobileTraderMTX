@@ -49,7 +49,6 @@ class OrderAdapter(
             binding.iconsImages.setOnClickListener {
                 clickListener(item, binding)
             }
-
         }
     }
 }

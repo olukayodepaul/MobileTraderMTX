@@ -4,9 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/add_icons.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/ic_calenda.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_message.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/ic_time.xml" value="0.184" />
         <entry key="app/src/main/res/layout/action_bar_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_loadoutt.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/bottom_item_sheet.xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/layout/message_adapter.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/message_bottom_sheet.xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/layout/money_agent.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/menu/agentmenu.xml" value="0.1" />
       </map>
     </option>

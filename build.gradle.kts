@@ -10,7 +10,6 @@ buildscript {
             classpath(Hilt.hilt_gradle_plugin)
             classpath(Build.kotlinGradlePlugin)
             classpath ("com.google.gms:google-services:4.3.10")
-
         }
     }
 }

@@ -6,9 +6,10 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.mobiletradermtx.databinding.MessageAdapterBinding
 import com.mobile.mobiletradermtx.dto.EntityAccuracy
+import kotlin.reflect.KFunction2
 
 
-class MessageAdapter(private var mItems: List<EntityAccuracy>) :
+class MessageAdapter(private var mItems: List<EntityAccuracy>, private val itemReturn: KFunction2<EntityAccuracy,MessageAdapterBinding,Unit>) :
     RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -19,16 +20,16 @@ class MessageAdapter(private var mItems: List<EntityAccuracy>) :
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val item = mItems[p1]
-        p0.bind(item)
+        p0.bind(item,itemReturn)
     }
 
     override fun getItemCount() = mItems.size
 
     inner class ViewHolder(private val binding: MessageAdapterBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: EntityAccuracy) {
+        fun bind(item: EntityAccuracy, isReturnFunction: KFunction2<EntityAccuracy,MessageAdapterBinding, Unit>) {
 
-            binding.timeago.text = item.entry_date
+            binding.calendarDate.text = item.entry_date
 
             if(item.status==2) {
                 binding.custIcons.isVisible = true
@@ -38,7 +39,11 @@ class MessageAdapter(private var mItems: List<EntityAccuracy>) :
                 binding.iconsImages.isVisible = true
             }
 
-            binding.modulecontents.text = item.remark
+            binding.content.text = item.remark
+
+            binding.parentModules.setOnClickListener {
+                isReturnFunction(item, binding)
+            }
         }
     }
 
