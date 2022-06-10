@@ -701,6 +701,27 @@ data class DataAccuracy(
     )
 }
 
+data class SoqPrediction(
+    @SerializedName("status")
+    @Expose
+    var status: Int? = null,
+    @SerializedName("msg")
+    @Expose
+    var msg: String? = null,
+    @SerializedName("soq")
+    @Expose
+    var soq: List<SoqPredictedItems>? = null
+) {
+    data class SoqPredictedItems(
+        @SerializedName("skucode")
+        @Expose
+        var skucode: String? = null,
+        @SerializedName("soq")
+        @Expose
+        var soq: String? = null
+    )
+}
+
 data class BreadCastNotification(val counts: Int = 0)
 
 

@@ -18,7 +18,7 @@ class SalesEntryViewModel @ViewModelInject constructor(private val repo: SalesEn
     )
     val basketResponseState get() = _basketResponseState
 
-    fun isUserDailyBaskets(employee_id: Int, sysdate: String, curDate: String) =
+    fun isUserDailyBaskets(employee_id: Int, sysdate: String, curDate: String, urno:Int) =
         viewModelScope.launch {
 
             _basketResponseState.value = NetworkResult.Loading
@@ -45,15 +45,27 @@ class SalesEntryViewModel @ViewModelInject constructor(private val repo: SalesEn
                     }
 
                     if (remoteData.status == 200 && limitToSalesEntry.isNotEmpty()) {
+                        val isMapData = remoteData.basketlimit!!.map { it.toBasketLimit() }
                         mapper.status = remoteData.status!!
                         mapper.message = remoteData.msg!!
-                        mapper.data = remoteData.basketlimit!!.map { it.toBasketLimit() }
-                        repo.setBasket(remoteData.basketlimit!!.map { it.toBasketLimit() }) //set the basket
+                        mapper.data = isMapData
+                        repo.setBasket(isMapData)
                     } else {
                         mapper.message = "Basket Not Assign"
                         mapper.status = 400
                         mapper.data = emptyList()
                     }
+
+                    //from here you can update the soq before presenting the data to the view.
+                    if(mapper.data!!.isNotEmpty()) {
+                        val castSoqToLocalData = repo.soqPrediction(urno)
+                        if(castSoqToLocalData.status==200 && castSoqToLocalData.soq!!.isNotEmpty()){
+                            for(x in castSoqToLocalData.soq!!) {
+                                repo.updateCastedSoq(x.soq!!, x.skucode!!)
+                            }
+                        }
+                    }
+
                     _basketResponseState.value = NetworkResult.Success(mapper)
                 }
 

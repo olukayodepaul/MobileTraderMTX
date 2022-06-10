@@ -8,30 +8,19 @@ import retrofit2.http.*
 interface RetrofitService {
 
     @GET("/mtx/users/userslogin")
-    suspend fun login(
-        @Query("username") username: String,
-        @Query("password") password: String
-    ): LoginResponse
+    suspend fun login(@Query("username") username: String, @Query("password") password: String): LoginResponse
 
     @GET("/mtx/usermodules")
-    suspend fun userModules(
-        @Query("employee_id") employee_id: Int
-    ): ModulesResponse
+    suspend fun userModules(@Query("employee_id") employee_id: Int): ModulesResponse
 
     @GET("/sales/customers")
-    suspend fun getCustomers(
-        @Query("employee_id") employee_id: Int
-    ): CustomersResponse
+    suspend fun getCustomers(@Query("employee_id") employee_id: Int): CustomersResponse
 
     @GET("/sales/basketlimit")
-    suspend fun fetchBasketFromRemoteRep(
-        @Query("employee_id") employee_id: Int
-    ): BasketLimitResponse
+    suspend fun fetchBasketFromRemoteRep(@Query("employee_id") employee_id: Int): BasketLimitResponse
 
     @POST("/sales/dailysales")
-    suspend fun postSales(
-        @Body data: OrderPosted
-    ): PostSalesResponse
+    suspend fun postSales(@Body data: OrderPosted): PostSalesResponse
 
     @POST("/users/task")
     suspend fun task(
@@ -61,22 +50,15 @@ interface RetrofitService {
     ): GeneralResponse
 
     @GET("/sales/customerorder")
-    suspend fun orderPurchase(
-        @Query("employee_id") employee_id: Int,
-        @Query("urno") urno: Int
-    ): OrderParentList
+    suspend fun orderPurchase(@Query("employee_id") employee_id: Int, @Query("urno") urno: Int): OrderParentList
 
     @GET("/sales/errorcorrection")
-    suspend fun resetError(
-        @Query("employee_id") employee_id: Int,
-        @Query("product_code") product_code: String,
-        @Query("qty") qty: Double
-    ): OrderError
+    suspend fun resetError(@Query("employee_id") employee_id: Int, @Query("product_code") product_code: String, @Query("qty") qty: Double): OrderError
 
     @GET("/zoho/msg")
-    suspend fun dataAccuracy(
-        @Query("customercode") customercode: String
-    ): DataAccuracy
+    suspend fun dataAccuracy(@Query("customercode") customercode: String): DataAccuracy
 
+    @GET("/zoho/soq")
+    suspend fun soqPrediction(@Query("urno") urno: Int): SoqPrediction
 
 }

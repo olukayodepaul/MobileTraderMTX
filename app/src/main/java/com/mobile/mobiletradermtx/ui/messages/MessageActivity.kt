@@ -2,7 +2,6 @@ package com.mobile.mobiletradermtx.ui.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
@@ -10,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mobile.mobiletradermtx.databinding.ActivityMessageBinding
-import com.mobile.mobiletradermtx.databinding.BottomItemSheetBinding
 import com.mobile.mobiletradermtx.databinding.MessageAdapterBinding
 import com.mobile.mobiletradermtx.databinding.MessageBottomSheetBinding
 import com.mobile.mobiletradermtx.dto.EntityAccuracy
@@ -63,12 +61,9 @@ class MessageActivity : AppCompatActivity() {
         viewModel.messageResponseState.collect {
             it.let {
                 when(it) {
-                    is NetworkResult.Empty -> {
-                    }
-                    is NetworkResult.Error -> {
-                    }
-                    is NetworkResult.Loading -> {
-                    }
+                    is NetworkResult.Empty -> {}
+                    is NetworkResult.Error -> {}
+                    is NetworkResult.Loading -> {}
                     is NetworkResult.Success -> {
                         binding.progressbarHolder.isVisible = false
                         adapter = MessageAdapter(it.data!!,::handleAdapterEvent)

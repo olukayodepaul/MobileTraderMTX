@@ -75,7 +75,8 @@ class SalesEntryActivity : AppCompatActivity(), View.OnClickListener {
             viewModel.isUserDailyBaskets(
                 sessionManager.fetchEmployeeId.first(),
                 sessionManager.fetchDate.first(),
-                GeoFencing.currentDate!!
+                GeoFencing.currentDate!!,
+                isIntentData.data!!.urno!!
             )
         }
     }

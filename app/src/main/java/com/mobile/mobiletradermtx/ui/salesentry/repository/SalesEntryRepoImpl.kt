@@ -4,14 +4,13 @@ import com.mobile.mobiletradermtx.datasource.AppDao
 import com.mobile.mobiletradermtx.datasource.RetrofitService
 import com.mobile.mobiletradermtx.dto.BasketLimitList
 import com.mobile.mobiletradermtx.dto.BasketLimitResponse
-
+import com.mobile.mobiletradermtx.dto.SoqPrediction
 
 class SalesEntryRepoImpl(
-
     private val retrofitClient: RetrofitService,
     private val appdoa: AppDao
-
 ) : SalesEntryRepo {
+
     override suspend fun fetchBasketFromRemoteRep(employee_id: Int): BasketLimitResponse {
         return retrofitClient.fetchBasketFromRemoteRep(employee_id)
     }
@@ -49,5 +48,12 @@ class SalesEntryRepoImpl(
         return appdoa.setBasketToInitState()
     }
 
+    override suspend fun soqPrediction(urno: Int): SoqPrediction {
+        return retrofitClient.soqPrediction(urno)
+    }
+
+    override suspend fun updateCastedSoq(soq: String, product_code: String) {
+        return appdoa.updateCastedSoq(soq, product_code)
+    }
 
 }
