@@ -6,7 +6,10 @@ import com.mobile.mobiletradermtx.datasource.RetrofitServices
 import com.mobile.mobiletradermtx.dto.*
 
 
-class SalesRepoImpl (private val retrofitClient: RetrofitService, private val appdoa: AppDao, private val retrofitService: RetrofitServices): SalesRepo {
+class SalesRepoImpl (
+    private val retrofitClient: RetrofitService,
+    private val appdoa: AppDao,
+    private val retrofitService: RetrofitServices): SalesRepo {
 
     override suspend fun getCustomer(employee_id: Int): CustomersResponse {
         return retrofitClient.getCustomers(employee_id)
@@ -46,5 +49,19 @@ class SalesRepoImpl (private val retrofitClient: RetrofitService, private val ap
     ) {
         return appdoa.updateIndividualCustomer(outletclassid, outletlanguageid, outlettypeid, outletname, outletaddress, contactname, contactphone, latitude, longitude, urno)
     }
+
+    override suspend fun isCurrentMessage(msg: List<EntityAccuracy>) {
+        return appdoa.isCurrentMessage(msg)
+    }
+
+    override suspend fun getDataAccuracy(): List<EntityAccuracy> {
+        return appdoa.getDataAccuracy()
+    }
+
+    override suspend fun dataAccuracy(customercode: String): DataAccuracy {
+        return retrofitClient.dataAccuracy(customercode)
+    }
+
+
 
 }

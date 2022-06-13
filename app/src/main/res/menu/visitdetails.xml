@@ -4,6 +4,13 @@
     app:menu="@menu/attendant_menu">
 
     <item
+        android:id="@+id/action_notifications_message"
+        android:title="Search"
+        android:icon="@drawable/ic_message_icon"
+        app:showAsAction="always"
+        app:actionLayout="@layout/action_bar_notification_message" />
+
+    <item
         android:id="@+id/action_notifications"
         android:title="Search"
         android:icon="@drawable/ic_baseline_accessible_24"
@@ -14,8 +21,7 @@
         android:id="@+id/action_filter_search"
         android:title="Search"
         android:icon="@drawable/ic_baseline_search_24"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 
 
 </menu>

@@ -93,11 +93,11 @@ android:background="@color/btm_regis_color"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/roboto_bold"
+            android:padding="12dp"
             android:text="Sign In"
             android:textAlignment="center"
             android:textColor="@color/rippleEffectColor"
-            android:textSize="16sp"
-            android:padding="12dp" />
+            android:textSize="16sp" />
 
 
         <ProgressBar

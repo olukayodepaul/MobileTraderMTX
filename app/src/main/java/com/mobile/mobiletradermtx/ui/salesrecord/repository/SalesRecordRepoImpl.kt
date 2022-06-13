@@ -46,5 +46,4 @@ class SalesRecordRepoImpl (
         return retrofitServices.sendTokenToday(urno, employee_id, curlocation, region)
     }
 
-
 }

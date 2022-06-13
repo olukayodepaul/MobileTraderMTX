@@ -5,6 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobile.mobiletradermtx.dto.EntityAccuracy
+import com.mobile.mobiletradermtx.dto.NotificationAndMessage
 import com.mobile.mobiletradermtx.dto.toAccuracyEntity
 import com.mobile.mobiletradermtx.ui.messages.repository.MessageRepo
 import com.mobile.mobiletradermtx.util.NetworkResult
@@ -14,36 +15,53 @@ import kotlinx.coroutines.launch
 class MessageViewModel @ViewModelInject constructor(private val repo: MessageRepo) : ViewModel() {
 
     private val _messageResponseState =
-        MutableStateFlow<NetworkResult<List<EntityAccuracy>>>(NetworkResult.Empty)
+        MutableStateFlow<NetworkResult<NotificationAndMessage>>(NetworkResult.Empty)
     val messageResponseState get() = _messageResponseState
 
     fun isMessageAccuracy(customerCode: String, entriesDate: String) = viewModelScope.launch {
         _messageResponseState.value = NetworkResult.Loading
         try {
-            Log.d("EPOKHAI 0","$customerCode $entriesDate")
+
             val isDataAccuracy = repo.getDataAccuracy()
             val entryDate = isDataAccuracy.filter { it.entry_date.equals(entriesDate) }
-            Log.d("EPOKHAI 1","$entryDate")
+
+            val filterReadFromUnreadMessages = isDataAccuracy.count {
+                it.status == 1
+            }
 
             if (entryDate.isNotEmpty()) {
-                _messageResponseState.value = NetworkResult.Success(isDataAccuracy)
-                Log.d("EPOKHAI 2","")
+
+                val notificationAndMessage = NotificationAndMessage(
+                    filterReadFromUnreadMessages,isDataAccuracy
+                )
+                _messageResponseState.value = NetworkResult.Success(notificationAndMessage)
             } else {
-                Log.d("EPOKHAI 3","$entryDate")
+
                 val isData = repo.dataAccuracy(customerCode)
-                Log.d("EPOKHAI 4","$isData")
+
                 if (isData.status == 200 || isData.accuracy!!.isNotEmpty()) {
-                    Log.d("EPOKHAI 5","")
+
                     val result = isData.accuracy!!.map { it.toAccuracyEntity() }
-                    repo.isCurrentMessage(result)
-                    _messageResponseState.value = NetworkResult.Success(repo.getDataAccuracy())
+                    repo.isCurrentMessage(result) //save in local Repository
+                    val isAccuracyMessage = repo.getDataAccuracy()
+
+                    val filterReadFromUnreadMessage = isAccuracyMessage.count {
+                        it.status == 1
+                    }
+
+                    val notificationAndMessage = NotificationAndMessage(
+                        filterReadFromUnreadMessage, isAccuracyMessage
+                    )
+
+                    _messageResponseState.value = NetworkResult.Success(notificationAndMessage)
                 } else {
-                    Log.d("EPOKHAI 6","")
-                    _messageResponseState.value = NetworkResult.Success(emptyList())
+                    val notificationAndMessage = NotificationAndMessage(
+                        filterReadFromUnreadMessages,isDataAccuracy
+                    )
+                    _messageResponseState.value = NetworkResult.Success(notificationAndMessage)
                 }
             }
         } catch (e: Throwable) {
-                Log.d("EPOKHAI 7","${e.message}")
             _messageResponseState.value = NetworkResult.Error(e)
         }
     }
@@ -57,23 +75,6 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
         try {
             NetworkResult.Success(repo.updateDataAccuracyStatus(status, id))
         } catch (e: Throwable) {}
-    }
-
-    //put it on modules.
-    /**
-     *  Status count as notification.
-     * @SelectCount change message status from unread to read.....
-     */
-    private val _countResponseState = MutableStateFlow<NetworkResult<Int>>(NetworkResult.Empty)
-    val countResponseState get() = _countResponseState
-
-    fun isMessageCountAccuracy() = viewModelScope.launch {
-        try {
-            _countResponseState.value =
-                NetworkResult.Success(repo.getCountDataAccuracyStatus())
-        } catch (e: Throwable) {
-            _countResponseState.value = NetworkResult.Error(e)
-        }
     }
 
 

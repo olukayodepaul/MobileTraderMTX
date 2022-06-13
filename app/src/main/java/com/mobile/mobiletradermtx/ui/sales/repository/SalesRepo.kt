@@ -11,5 +11,7 @@ interface SalesRepo {
     suspend fun sendTokenToday(unro: Int): SendTokenToIndividualCustomer
     suspend fun CustomerInfoAsync(urno: Int): OutletAsyn
     suspend fun updateIndividualCustomer(outletclassid:Int, outletlanguageid:Int, outlettypeid:Int, outletname:String, outletaddress:String, contactname:String, contactphone:String, latitude:Double, longitude:Double,urno:Int)
-
+    suspend fun isCurrentMessage(msg: List<EntityAccuracy>)
+    suspend fun getDataAccuracy() : List<EntityAccuracy>
+    suspend fun dataAccuracy(customercode: String) : DataAccuracy
 }

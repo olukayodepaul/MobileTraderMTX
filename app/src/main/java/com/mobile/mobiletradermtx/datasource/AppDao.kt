@@ -78,9 +78,6 @@ interface AppDao {
     @Query("UPDATE dataAccuracy SET status = :status WHERE _id = :id")
     suspend fun updateDataAccuracyStatus(status:Int,id:String)
 
-    @Query("SELECT count(status)  FROM  dataAccuracy WHERE status = 2 ")
-    suspend fun getCountDataAccuracyStatus(): Int
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun isCurrentMessage(msg: List<EntityAccuracy>)
 

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -26,9 +27,6 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.location.*
 import com.google.firebase.database.FirebaseDatabase
 import com.mobile.mobiletradermtx.databinding.ActivitySalesBinding
-import com.mobile.mobiletradermtx.dto.Customers
-import com.mobile.mobiletradermtx.dto.CustomersList
-import com.mobile.mobiletradermtx.dto.toCustomers
 import com.mobile.mobiletradermtx.ui.customers.AddCustomerActivity
 import com.mobile.mobiletradermtx.ui.customers.UpdateCustomersActivity
 import com.mobile.mobiletradermtx.util.StartGoogleMap.startGoogleMapIntent
@@ -36,15 +34,16 @@ import com.nex3z.notificationbadge.NotificationBadge
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import java.text.SimpleDateFormat
-import java.util.*
 import com.mobile.mobiletradermtx.R
-import com.mobile.mobiletradermtx.dto.IsParcelable
+import com.mobile.mobiletradermtx.dto.*
+import com.mobile.mobiletradermtx.ui.messages.MessageActivity
 import com.mobile.mobiletradermtx.ui.order.ReOrderActivity
 import com.mobile.mobiletradermtx.ui.orderpurchase.OrderPurchaseActivity
 import com.mobile.mobiletradermtx.ui.salesentry.SalesEntryActivity
 import com.mobile.mobiletradermtx.util.*
 import com.mobile.mobiletradermtx.util.FirebaseDatabases.setOrderBadge
 import com.mobile.mobiletradermtx.util.GeoFencing.setGeoFencing
+import java.util.*
 
 @AndroidEntryPoint
 class SalesActivity : AppCompatActivity(), View.OnClickListener {
@@ -63,9 +62,15 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
 
     var notificationBadgeView: View? = null
 
+    var m_notificationBadgeView: View? = null
+
     var notificationBadge: NotificationBadge? = null
 
+    var m_notificationBadge: NotificationBadge? = null
+
     var item_Notification: MenuItem? = null
+
+    var m_item_Notification: MenuItem? = null
 
     private var hasGps = false
 
@@ -113,6 +118,8 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
 
         isOutletUpdateAsync()
     }
+
+
 
     private fun initAdapter() {
         val layoutManager = LinearLayoutManager(this)
@@ -245,19 +252,28 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
             R.id.action_filter_search -> {
                 refreshAdapter()
             }
-
         }
         return false
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.visitdetail, menu)
+
         item_Notification = menu!!.findItem(R.id.action_notifications)
         notificationBadgeView = item_Notification!!.actionView
         notificationBadge = notificationBadgeView!!.findViewById(R.id.badge) as NotificationBadge
-
         notificationBadgeView!!.setOnClickListener {
             val intent = Intent(applicationContext, ReOrderActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+
+
+        m_item_Notification = menu!!.findItem(R.id.m_action_notifications)
+        m_notificationBadgeView = m_item_Notification!!.actionView
+        m_notificationBadge = m_notificationBadgeView!!.findViewById(R.id.Mbadge) as NotificationBadge
+        m_notificationBadgeView!!.setOnClickListener {
+            val intent = Intent(applicationContext, MessageActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
@@ -571,5 +587,5 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
 }
+

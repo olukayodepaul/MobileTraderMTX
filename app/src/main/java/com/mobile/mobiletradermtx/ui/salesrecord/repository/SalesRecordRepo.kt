@@ -5,8 +5,6 @@ import com.mobile.mobiletradermtx.dto.GeneralResponse
 import com.mobile.mobiletradermtx.dto.OrderPosted
 import com.mobile.mobiletradermtx.dto.PostSalesResponse
 
-
-
 interface SalesRecordRepo {
     suspend fun fetchBasketFromLocalRep() : List<BasketLimitList>
     suspend fun postSales(order: OrderPosted): PostSalesResponse

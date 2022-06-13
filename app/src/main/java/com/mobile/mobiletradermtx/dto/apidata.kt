@@ -61,7 +61,6 @@ data class Employees(
     @SerializedName("customerno")
     @Expose
     var customerno: String? = null,
-
     )
 
 data class ModulesResponse(
@@ -722,7 +721,17 @@ data class SoqPrediction(
     )
 }
 
-data class BreadCastNotification(val counts: Int = 0)
+data class BreadCastNotification(
+    var latitude: String? = null
+)
+
+data class NotificationAndMessage(
+    var counts: Int? = null,
+    var data: List<EntityAccuracy>? = null,
+)
+
+
+
 
 
 

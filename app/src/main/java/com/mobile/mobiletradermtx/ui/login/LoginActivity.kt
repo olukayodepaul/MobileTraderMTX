@@ -1,12 +1,15 @@
 package com.mobile.mobiletradermtx.ui.login
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,15 +18,23 @@ import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.mobile.mobiletradermtx.R
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.database.FirebaseDatabase
 import com.mobile.mobiletradermtx.databinding.ActivityMainBinding
+import com.mobile.mobiletradermtx.dto.BreadCastNotification
+import com.mobile.mobiletradermtx.dto.MoneyAgent
+import com.mobile.mobiletradermtx.dto.MoneyAgentResponse
+import com.mobile.mobiletradermtx.dto.SoqPrediction
+import com.mobile.mobiletradermtx.ui.messages.MessageActivity
 import com.mobile.mobiletradermtx.ui.module.ModulesActivity
+import com.mobile.mobiletradermtx.ui.order.ReOrderActivity
 import com.mobile.mobiletradermtx.util.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -190,12 +201,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             }
     }
-//
-//    private fun setRequestedToken() {
-//        val user = User("paul", "email@paul")
-//        val references =    database.getReference("/defaulttoken/")
-//        references.child("shbshbshbsq").setValue(user)
-//    }
+
 
 
 }
