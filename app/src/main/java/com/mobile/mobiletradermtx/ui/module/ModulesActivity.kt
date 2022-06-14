@@ -62,7 +62,6 @@ class ModulesActivity : AppCompatActivity() {
         userModulesResponse()
 
         lifecycleScope.launchWhenResumed {
-            Log.d("EPOKHAI 45","5")
             viewModel.isMessageAccuracy(sessionManager.fetchDynamicCustomerNo.first(), currentDate!!)
             binding.toolbar.subtitle = "${sessionManager.fetchEmployeeName.first()} (${sessionManager.fetchEmployeeEdcode.first()})"
         }
@@ -179,7 +178,6 @@ class ModulesActivity : AppCompatActivity() {
                                 notificationBadgeMessage!!.isVisible = false
                                 notificationBadgeMessage!!.setText("${it.data.counts}")
                             }else{
-                                Log.d("EPOKHAI 45","11")
                                 notificationBadgeMessage!!.isVisible = true
                                 notificationBadgeMessage!!.setText("${it.data.counts}")
                             }
@@ -187,6 +185,13 @@ class ModulesActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launchWhenResumed {
+            viewModel.isMessageAccuracy(sessionManager.fetchDynamicCustomerNo.first(), currentDate!!)
         }
     }
 

@@ -1,10 +1,8 @@
 package com.mobile.mobiletradermtx.ui.messages
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobile.mobiletradermtx.dto.EntityAccuracy
 import com.mobile.mobiletradermtx.dto.NotificationAndMessage
 import com.mobile.mobiletradermtx.dto.toAccuracyEntity
 import com.mobile.mobiletradermtx.ui.messages.repository.MessageRepo
@@ -34,7 +32,9 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
                 val notificationAndMessage = NotificationAndMessage(
                     filterReadFromUnreadMessages,isDataAccuracy
                 )
+
                 _messageResponseState.value = NetworkResult.Success(notificationAndMessage)
+
             } else {
 
                 val isData = repo.dataAccuracy(customerCode)
@@ -66,7 +66,6 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
         }
     }
 
-
     /**
      * Update Status icon at on click.
      * @Update Update Status icon at on click
@@ -74,8 +73,9 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
     fun isMessageUpdateAccuracy(status: Int, id: String) = viewModelScope.launch {
         try {
             NetworkResult.Success(repo.updateDataAccuracyStatus(status, id))
-        } catch (e: Throwable) {}
-    }
+        } catch (e: Throwable) {
 
+        }
+    }
 
 }

@@ -106,8 +106,8 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         lifecycleScope.launchWhenResumed {
-            binding.toolbar.subtitle =
-                "${sessionManager.fetchEmployeeName.first()} (${sessionManager.fetchEmployeeEdcode.first()})"
+            viewModel.isMessageAccuracy(sessionManager.fetchDynamicCustomerNo.first(), GeoFencing.currentDate!!)
+            binding.toolbar.subtitle = "${sessionManager.fetchEmployeeName.first()} (${sessionManager.fetchEmployeeEdcode.first()})"
         }
 
         binding.mapcustomers.setOnClickListener {
@@ -278,6 +278,7 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
+        setMessageBadge()
         setupBadge()
         return true
     }
@@ -579,6 +580,36 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
                                 binding.loader.root.isVisible = false
                                 binding.tvRecycler.isVisible = true
                                 ToastDialog(applicationContext, "Synchronisation Error")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setMessageBadge() = lifecycleScope.launchWhenCreated {
+        lifecycleScope.launchWhenResumed {
+            viewModel.messageResponseState.collect {
+                it.let {
+                    when (it) {
+
+                        is NetworkResult.Empty -> {
+                        }
+
+                        is NetworkResult.Error -> {
+                        }
+
+                        is NetworkResult.Loading -> {
+                        }
+
+                        is NetworkResult.Success -> {
+                            if(it.data!!.counts==0){
+                                m_notificationBadge!!.isVisible = false
+                                m_notificationBadge!!.setText("${it.data.counts}")
+                            }else{
+                                m_notificationBadge!!.isVisible = true
+                                m_notificationBadge!!.setText("${it.data.counts}")
                             }
                         }
                     }
