@@ -3,24 +3,42 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.14817629179331307" />
         <entry key="app/src/main/res/drawable/add_icons.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/ic_calenda.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_message.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_time.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/name_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg1.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/name_bg2.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg3.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg4.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg5.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg6.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg7.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/name_bg8.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selectors.xml" value="0.1" />
         <entry key="app/src/main/res/layout/action_bar_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/action_bar_notification_message.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/layout/activity_add_cuctomer.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_loadoutt.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/layout/activity_modules.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/activity_order_purchase.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/activity_re_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sales.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/activity_sales_record.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/attendant_response_message.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/layout/bottom_item_sheet.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/layout/message_adapter.xml" value="0.335" />
         <entry key="app/src/main/res/layout/message_bottom_sheet.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/layout/money_agent.xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/layout/sales_adapter.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/user_modules_adapter.xml" value="0.335" />
         <entry key="app/src/main/res/menu/agentmenu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/attendant_menu.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/menu/visitdetail.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/menu/visitdetail_1.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/menu/visitdetails.xml" value="0.23072916666666668" />

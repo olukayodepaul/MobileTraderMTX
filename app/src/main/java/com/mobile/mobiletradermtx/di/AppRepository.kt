@@ -142,12 +142,12 @@ object AppRepository {
     @Provides
     fun provideReOrderRepository(
         retrofitClient: RetrofitServices,
-        appdoa: AppDao
+        appdoa: AppDao,
+        retrofitService: RetrofitService
     ): OrderRepo {
         return OrderRepoImpl(
-            retrofitClient, appdoa
+            retrofitClient, appdoa, retrofitService
         )
     }
-
 
 }

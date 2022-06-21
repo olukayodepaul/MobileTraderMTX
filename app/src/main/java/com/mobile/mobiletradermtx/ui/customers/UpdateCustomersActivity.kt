@@ -32,7 +32,6 @@ import com.mobile.mobiletradermtx.util.PermissionUtility
 import com.mobile.mobiletradermtx.util.SessionManager
 import com.mobile.mobiletradermtx.util.ToastDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint

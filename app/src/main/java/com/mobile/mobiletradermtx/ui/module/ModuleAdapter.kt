@@ -10,6 +10,7 @@ import com.mobile.mobiletradermtx.dto.UserModules
 import com.mobile.mobiletradermtx.ui.messages.MessageActivity
 import com.mobile.mobiletradermtx.ui.order.ReOrderActivity
 import com.mobile.mobiletradermtx.ui.sales.SalesActivity
+import com.mobile.mobiletradermtx.util.CircleImage
 
 
 class ModuleAdapter(private var mItems: List<UserModules>, private val context: Context) :
@@ -27,6 +28,8 @@ class ModuleAdapter(private var mItems: List<UserModules>, private val context: 
         p0.bind(item)
     }
 
+
+
     override fun getItemCount() = mItems.size
 
     inner class ViewHolder(private val binding: UserModulesAdapterBinding) :
@@ -34,12 +37,11 @@ class ModuleAdapter(private var mItems: List<UserModules>, private val context: 
 
         fun bind(item: UserModules) {
 
-            //val letter: String = item.name!!.substring(0, 1).uppercase()
-            //val generator = ColorGenerator.MATERIAL
-            //val drawable = TextDrawable.builder().buildRound(letter, generator.randomColor)
-            //binding.idCheck.setImageDrawable(drawable)
             binding.modulecontents.text = item.name!!.lowercase().replaceFirstChar{it.uppercase()}
             binding.remark.text = item.imageurl!!.lowercase().replaceFirstChar{it.uppercase()}
+            binding.idchecks.text = CircleImage.getNameInitials(item.name!!)
+            binding.idchecks.background = CircleImage.getNameInitialsBg(context)
+
 
             binding.parentModules.setOnClickListener {
                 when (item.navigationid) {

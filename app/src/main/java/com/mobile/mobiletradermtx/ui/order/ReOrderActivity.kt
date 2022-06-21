@@ -137,6 +137,8 @@ class ReOrderActivity : AppCompatActivity() {
         item_Notification = menu!!.findItem(R.id.action_notifications)
         notificationBadgeView = item_Notification!!.actionView
         notificationBadge = notificationBadgeView!!.findViewById(R.id.badge) as NotificationBadge
+
+
         addBadge()
         return true
     }

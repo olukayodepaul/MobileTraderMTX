@@ -135,7 +135,6 @@ class SalesViewModel @ViewModelInject constructor(private val repo: SalesRepo): 
         }
     }
 
-
     private val _messageResponseState =
         MutableStateFlow<NetworkResult<NotificationAndMessage>>(NetworkResult.Empty)
     val messageResponseState get() = _messageResponseState

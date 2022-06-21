@@ -15,6 +15,7 @@ import com.mobile.mobiletradermtx.dto.toCustomers
 import com.mobile.mobiletradermtx.ui.attendant.BankActivity
 import com.mobile.mobiletradermtx.ui.attendant.LoadInActivity
 import com.mobile.mobiletradermtx.ui.attendant.LoadOutActivity
+import com.mobile.mobiletradermtx.util.CircleImage
 
 class SalesAdapter(private var mItems: List<CustomersList>, private val context: Context,
                    private val isReturnFunction: KFunction2<CustomersList, Int,  Unit>) :
@@ -41,13 +42,12 @@ class SalesAdapter(private var mItems: List<CustomersList>, private val context:
             item: CustomersList, clickListener: KFunction2<CustomersList, Int,  Unit>
         ) {
 
-            //val letter: String = item.outletname!!.substring(0, 1).uppercase()
-            //val generator = ColorGenerator.MATERIAL
-            //val drawable = TextDrawable.builder().buildRound(letter, generator.randomColor)
-            //binding.idCheck.setImageDrawable(drawable)
+
             binding.modulecontents.text = item.outletname!!.lowercase().replaceFirstChar{it.uppercase()}
             binding.remark.text = ("URNO: ${item.urno}, VCL: ${item.volumeclass}")
             binding.timeago.text = item.timeago
+            binding.idchecks.text = CircleImage.getNameInitials(item.outletname!!)
+            binding.idchecks.background = CircleImage.getNameInitialsBg(context)
 
             if(item.sort==1) {
                 binding.iconsImages.isVisible = false
