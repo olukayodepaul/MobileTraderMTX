@@ -1,15 +1,17 @@
 package com.mobile.mobiletradermtx.ui.order
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.mobiletradermtx.databinding.OrderAdapterBinding
 import com.mobile.mobiletradermtx.dto.AllCustomerProductOrder
+import com.mobile.mobiletradermtx.util.CircularImage
 import kotlin.reflect.KFunction2
 
 
 class OrderAdapter(
-    private var mItems: List<AllCustomerProductOrder>,
+    private var mItems: List<AllCustomerProductOrder>, private val context: Context,
     private val isReturnFunction: KFunction2<AllCustomerProductOrder, OrderAdapterBinding, Unit>
 ) :
     RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
@@ -32,17 +34,14 @@ class OrderAdapter(
 
         fun bind(item: AllCustomerProductOrder, clickListener: KFunction2<AllCustomerProductOrder, OrderAdapterBinding, Unit>) {
 
-            //val letter: String? = item.outletname.substring(0, 1)
-            //val generator = ColorGenerator.MATERIAL
-            //val drawable = TextDrawable.builder().buildRound(letter, generator.randomColor)
-
-           // binding.idCheck.setImageDrawable(drawable)
             binding.modulecontents.text = item.outletname
             binding.remark.text = ("URNO: ${item.urno}")
             binding.timeago.text = "${item.dates} ${item.trantime}"
             binding.transType.text = "Cash Payment"
+            binding.idcheck.text = CircularImage.getNameInitials(item.outletname)
+            binding.idcheck.background = CircularImage.getNameInitialsBg(context)
 
-            if(item.trantype.lowercase()=="true"){
+            if(item.trantype.lowercase()=="true") {
                 binding.transType.text = "Paid"
             }
 

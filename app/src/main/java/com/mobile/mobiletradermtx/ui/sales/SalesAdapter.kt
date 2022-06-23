@@ -15,7 +15,7 @@ import com.mobile.mobiletradermtx.dto.toCustomers
 import com.mobile.mobiletradermtx.ui.attendant.BankActivity
 import com.mobile.mobiletradermtx.ui.attendant.LoadInActivity
 import com.mobile.mobiletradermtx.ui.attendant.LoadOutActivity
-import com.mobile.mobiletradermtx.util.CircleImage
+import com.mobile.mobiletradermtx.util.CircularImage
 
 class SalesAdapter(private var mItems: List<CustomersList>, private val context: Context,
                    private val isReturnFunction: KFunction2<CustomersList, Int,  Unit>) :
@@ -46,8 +46,8 @@ class SalesAdapter(private var mItems: List<CustomersList>, private val context:
             binding.modulecontents.text = item.outletname!!.lowercase().replaceFirstChar{it.uppercase()}
             binding.remark.text = ("URNO: ${item.urno}, VCL: ${item.volumeclass}")
             binding.timeago.text = item.timeago
-            binding.idchecks.text = CircleImage.getNameInitials(item.outletname!!)
-            binding.idchecks.background = CircleImage.getNameInitialsBg(context)
+            binding.idchecks.text = CircularImage.getNameInitials(item.outletname!!)
+            binding.idchecks.background = CircularImage.getNameInitialsBg(context)
 
             if(item.sort==1) {
                 binding.iconsImages.isVisible = false

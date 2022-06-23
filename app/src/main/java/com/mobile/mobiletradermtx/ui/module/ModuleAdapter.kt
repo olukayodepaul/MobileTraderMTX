@@ -10,7 +10,7 @@ import com.mobile.mobiletradermtx.dto.UserModules
 import com.mobile.mobiletradermtx.ui.messages.MessageActivity
 import com.mobile.mobiletradermtx.ui.order.ReOrderActivity
 import com.mobile.mobiletradermtx.ui.sales.SalesActivity
-import com.mobile.mobiletradermtx.util.CircleImage
+import com.mobile.mobiletradermtx.util.CircularImage
 
 
 class ModuleAdapter(private var mItems: List<UserModules>, private val context: Context) :
@@ -39,9 +39,8 @@ class ModuleAdapter(private var mItems: List<UserModules>, private val context: 
 
             binding.modulecontents.text = item.name!!.lowercase().replaceFirstChar{it.uppercase()}
             binding.remark.text = item.imageurl!!.lowercase().replaceFirstChar{it.uppercase()}
-            binding.idchecks.text = CircleImage.getNameInitials(item.name!!)
-            binding.idchecks.background = CircleImage.getNameInitialsBg(context)
-
+            binding.idchecks.text = CircularImage.getNameInitials(item.name!!)
+            binding.idchecks.background = CircularImage.getNameInitialsBg(context)
 
             binding.parentModules.setOnClickListener {
                 when (item.navigationid) {

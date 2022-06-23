@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.mobiletradermtx.databinding.ItemRowParentBinding
 import com.mobile.mobiletradermtx.dto.Orders
+import com.mobile.mobiletradermtx.util.CircularImage
 
 
 open class OrderAdapter(private var context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
@@ -39,10 +40,8 @@ open class OrderAdapter(private var context: Context) : RecyclerView.Adapter<Ord
             binding.modulecontents.text = item.etime
 
             if(item.remark!!.isNotEmpty()) {
-                //val letter: String = item.remark!!.substring(0, 1).uppercase()
-                //val generator = ColorGenerator.MATERIAL
-                //val drawable = TextDrawable.builder().buildRound(letter, generator.randomColor)
-                //binding.IdCheck.setImageDrawable(drawable)
+                binding.idcheck.text = CircularImage.getNameInitials(item.remark!!)
+                binding.idcheck.background = CircularImage.getNameInitialsBg(context)
             }
 
             if(item.order!!.isNotEmpty()) {

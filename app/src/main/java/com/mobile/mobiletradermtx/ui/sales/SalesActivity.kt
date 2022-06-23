@@ -316,6 +316,7 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             getCurrentLocation()
         }
+
     }
 
     override fun onRequestPermissionsResult(
@@ -365,10 +366,10 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
         binding.loader.subTitles.text = "Please Wait"
         binding.loader.imageLoader.isVisible = true
 
-
         fusedLocationProviderClient.requestLocationUpdates(
             locationRequest, locationCallback, Looper.getMainLooper()
         )
+
     }
 
     private val locationCallback = object : LocationCallback() {
@@ -387,6 +388,9 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+        lifecycleScope.launchWhenResumed {
+            viewModel.isMessageAccuracy(sessionManager.fetchDynamicCustomerNo.first(), GeoFencing.currentDate!!)
+        }
     }
 
     private fun isCurrentLocationSetter(currentLocation: Location?) {
@@ -617,6 +621,5 @@ class SalesActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
 }
 

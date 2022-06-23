@@ -32,9 +32,11 @@
         <entry key="app/src/main/res/layout/activity_sales_record.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/attendant_response_message.xml" value="0.2786458333333333" />
         <entry key="app/src/main/res/layout/bottom_item_sheet.xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/layout/item_row_parent.xml" value="0.271875" />
         <entry key="app/src/main/res/layout/message_adapter.xml" value="0.335" />
         <entry key="app/src/main/res/layout/message_bottom_sheet.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/layout/money_agent.xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/layout/order_adapter.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/layout/sales_adapter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/user_modules_adapter.xml" value="0.335" />
         <entry key="app/src/main/res/menu/agentmenu.xml" value="0.1" />
@@ -43,6 +45,8 @@
         <entry key="app/src/main/res/menu/visitdetail_1.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/menu/visitdetails.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/menu/visitdetailss.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -88,13 +88,12 @@ class ReOrderActivity : AppCompatActivity() {
                     }
 
                     is NetworkResult.Success -> {
-                        //check empty list
                         binding.progressCust.isVisible = false
 
                         if(it.data!!.order.isNullOrEmpty()){
                             ToastDialog(applicationContext,"No Order is place")
                         }else{
-                            adapter = OrderAdapter(it.data.order!!, ::handleAdapterEvent)
+                            adapter = OrderAdapter(it.data.order!!,applicationContext ,::handleAdapterEvent)
                             adapter.notifyDataSetChanged()
                             binding.tvRecycler.setItemViewCacheSize(it.data.order!!.size)
                             binding.tvRecycler.adapter = adapter

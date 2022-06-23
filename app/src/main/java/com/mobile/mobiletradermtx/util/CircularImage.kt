@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import com.mobile.mobiletradermtx.R
 import kotlin.math.roundToInt
 
-object CircleImage {
+object CircularImage {
 
     fun getNameInitials(fullName: String): String {
         return fullName[0].uppercase()

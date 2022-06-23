@@ -50,9 +50,10 @@ object PermissionUtility {
             permisonToRequest.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
 
-        if (!hasLocationForegrandPermission(context)) {
-            permisonToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
-        }
+        //Only approximate location access granted.
+//        if (!hasLocationForegrandPermission(context)) {
+//            permisonToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+//        }
 
         //for android Q only
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
@@ -61,6 +62,7 @@ object PermissionUtility {
             }
         }
 
+         //Precise location access granted.
         if (!hasAccessFineLocationPermission(context)) {
             permisonToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
         }
