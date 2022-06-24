@@ -61,4 +61,7 @@ interface RetrofitService {
     @GET("/zoho/soq")
     suspend fun soqPrediction(@Query("urno") urno: Int): SoqPrediction
 
+    @GET("/zoho/msg/notify")
+    suspend fun messageNotify(@Query("_id") _id: String)
+
 }

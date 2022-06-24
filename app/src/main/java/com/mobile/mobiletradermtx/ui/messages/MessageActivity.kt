@@ -1,8 +1,9 @@
 package com.mobile.mobiletradermtx.ui.messages
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -17,7 +18,6 @@ import com.mobile.mobiletradermtx.databinding.ActivityMessageBinding
 import com.mobile.mobiletradermtx.databinding.MessageAdapterBinding
 import com.mobile.mobiletradermtx.databinding.MessageBottomSheetBinding
 import com.mobile.mobiletradermtx.dto.EntityAccuracy
-import com.mobile.mobiletradermtx.ui.order.ReOrderActivity
 import com.mobile.mobiletradermtx.util.GeoFencing.currentDate
 import com.mobile.mobiletradermtx.util.NetworkResult
 import com.mobile.mobiletradermtx.util.SessionManager
@@ -54,11 +54,10 @@ class MessageActivity : AppCompatActivity() {
         initViewModels()
         isMessageAccuracyStateFlow()
 
+        Log.d("EPOKHAI 12","JDJHBD")
+
         lifecycleScope.launchWhenResumed {
-            viewModel.isMessageAccuracy(
-                sessionManager.fetchDynamicCustomerNo.first(),
-                currentDate!!
-            )
+            viewModel.isMessageAccuracy(sessionManager.fetchDynamicCustomerNo.first(), currentDate!!)
         }
     }
 
@@ -98,7 +97,7 @@ class MessageActivity : AppCompatActivity() {
     }
 
      private fun handleAdapterEvent(item: EntityAccuracy, view: MessageAdapterBinding) {
-         viewModel.isMessageUpdateAccuracy(2, item._id!!)
+         viewModel.isMessageUpdateAccuracy(2, item._id!!, item.status!!)
          view.custIcons.isVisible = true
          view.iconsImages.isVisible = false
          val inflater = LayoutInflater.from(applicationContext)

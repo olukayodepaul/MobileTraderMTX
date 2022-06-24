@@ -27,4 +27,8 @@ class MessageRepoImpl (
         return appdoa.isCurrentMessage(msg)
     }
 
+    override suspend fun messageNotify(_id: String) {
+        return retrofitClient.messageNotify(_id)
+    }
+
 }

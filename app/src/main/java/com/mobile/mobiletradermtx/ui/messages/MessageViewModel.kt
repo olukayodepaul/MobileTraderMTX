@@ -17,7 +17,9 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
     val messageResponseState get() = _messageResponseState
 
     fun isMessageAccuracy(customerCode: String, entriesDate: String) = viewModelScope.launch {
+
         _messageResponseState.value = NetworkResult.Loading
+
         try {
 
             val isDataAccuracy = repo.getDataAccuracy()
@@ -70,8 +72,9 @@ class MessageViewModel @ViewModelInject constructor(private val repo: MessageRep
      * Update Status icon at on click.
      * @Update Update Status icon at on click
      */
-    fun isMessageUpdateAccuracy(status: Int, id: String) = viewModelScope.launch {
+    fun isMessageUpdateAccuracy(status: Int, id: String, readStatus: Int) = viewModelScope.launch {
         try {
+            if(readStatus==1) repo.messageNotify(id)
             NetworkResult.Success(repo.updateDataAccuracyStatus(status, id))
         } catch (e: Throwable) {
 

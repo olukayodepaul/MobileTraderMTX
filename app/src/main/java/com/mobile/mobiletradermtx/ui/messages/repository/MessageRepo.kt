@@ -8,4 +8,5 @@ interface MessageRepo {
     suspend fun getDataAccuracy() : List<EntityAccuracy>
     suspend fun updateDataAccuracyStatus(status:Int,id:String)
     suspend fun isCurrentMessage(msg: List<EntityAccuracy>)
+    suspend fun messageNotify(_id: String)
 }
